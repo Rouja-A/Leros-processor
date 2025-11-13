@@ -1,0 +1,15 @@
+module BindsTo_0_InstructionRegister(
+  input         clock,
+  input         reset,
+  input  [7:0]  io_addr,
+  input  [15:0] io_instrIn,
+  input         io_instrWrite,
+  output [15:0] io_instrOut
+);
+
+initial begin
+  $readmemh("resources/instructions.txt", InstructionRegister.mem);
+end
+                      endmodule
+
+bind InstructionRegister BindsTo_0_InstructionRegister BindsTo_0_InstructionRegister_Inst(.*);

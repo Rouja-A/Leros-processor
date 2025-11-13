@@ -1,0 +1,23 @@
+[
+  {
+    "class":"firrtl.transforms.BlackBoxInlineAnno",
+    "target":"LerosProcessor.MemoryUnit",
+    "name":"LerosProcessor.MemoryUnit.mem.v",
+    "text":"module BindsTo_0_MemoryUnit(\n  input        clock,\n  input  [7:0] io_writeData,\n  output [7:0] io_data\n);\n\ninitial begin\n  $readmemh(\"mem_data.hex\", MemoryUnit.mem);\nend\n                      endmodule\n\nbind MemoryUnit BindsTo_0_MemoryUnit BindsTo_0_MemoryUnit_Inst(.*);"
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.annotations.LoadMemoryAnnotation",
+    "target":"LerosProcessor.MemoryUnit.mem",
+    "fileName":"mem_data.hex",
+    "hexOrBinary":"h",
+    "originalMemoryNameOpt":"mem"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"Verilog"
+  }
+]

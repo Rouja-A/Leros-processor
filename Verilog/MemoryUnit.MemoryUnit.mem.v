@@ -1,0 +1,15 @@
+module BindsTo_0_MemoryUnit(
+  input        clock,
+  input        reset,
+  input  [7:0] io_adr,
+  input        io_memWe,
+  input  [7:0] io_writeData,
+  output [7:0] io_data
+);
+
+initial begin
+  $readmemh("resources/data_memory.txt", MemoryUnit.mem);
+end
+                      endmodule
+
+bind MemoryUnit BindsTo_0_MemoryUnit BindsTo_0_MemoryUnit_Inst(.*);

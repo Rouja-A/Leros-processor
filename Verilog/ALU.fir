@@ -1,0 +1,46 @@
+;buildInfoPackage: chisel3, version: 3.4.2, scalaVersion: 2.12.12, sbtVersion: 1.3.10
+circuit ALU : 
+  module ALU : 
+    input clock : Clock
+    input reset : UInt<1>
+    output io : {flip aluOp : UInt<4>, flip a : UInt<8>, flip b : UInt<8>, result : UInt<8>}
+    
+    node _T = eq(io.aluOp, UInt<1>("h00")) @[ALU.scala 14:15]
+    node _T_1 = add(io.a, io.b) @[ALU.scala 14:33]
+    node _T_2 = tail(_T_1, 1) @[ALU.scala 14:33]
+    node _T_3 = eq(io.aluOp, UInt<1>("h01")) @[ALU.scala 15:15]
+    node _T_4 = add(io.a, io.b) @[ALU.scala 15:33]
+    node _T_5 = tail(_T_4, 1) @[ALU.scala 15:33]
+    node _T_6 = eq(io.aluOp, UInt<2>("h02")) @[ALU.scala 16:15]
+    node _T_7 = sub(io.a, io.b) @[ALU.scala 16:33]
+    node _T_8 = tail(_T_7, 1) @[ALU.scala 16:33]
+    node _T_9 = eq(io.aluOp, UInt<2>("h03")) @[ALU.scala 17:15]
+    node _T_10 = sub(io.a, io.b) @[ALU.scala 17:33]
+    node _T_11 = tail(_T_10, 1) @[ALU.scala 17:33]
+    node _T_12 = eq(io.aluOp, UInt<3>("h04")) @[ALU.scala 18:15]
+    node _T_13 = dshr(io.a, UInt<1>("h01")) @[ALU.scala 18:33]
+    node _T_14 = eq(io.aluOp, UInt<3>("h05")) @[ALU.scala 19:15]
+    node _T_15 = and(io.a, io.b) @[ALU.scala 19:33]
+    node _T_16 = eq(io.aluOp, UInt<3>("h06")) @[ALU.scala 20:15]
+    node _T_17 = and(io.a, io.b) @[ALU.scala 20:33]
+    node _T_18 = eq(io.aluOp, UInt<3>("h07")) @[ALU.scala 21:15]
+    node _T_19 = or(io.a, io.b) @[ALU.scala 21:33]
+    node _T_20 = eq(io.aluOp, UInt<4>("h08")) @[ALU.scala 22:15]
+    node _T_21 = or(io.a, io.b) @[ALU.scala 22:33]
+    node _T_22 = eq(io.aluOp, UInt<4>("h09")) @[ALU.scala 23:15]
+    node _T_23 = xor(io.a, io.b) @[ALU.scala 23:33]
+    node _T_24 = eq(io.aluOp, UInt<4>("h0a")) @[ALU.scala 24:15]
+    node _T_25 = xor(io.a, io.b) @[ALU.scala 24:34]
+    node _T_26 = mux(_T_24, _T_25, UInt<8>("h00")) @[Mux.scala 98:16]
+    node _T_27 = mux(_T_22, _T_23, _T_26) @[Mux.scala 98:16]
+    node _T_28 = mux(_T_20, _T_21, _T_27) @[Mux.scala 98:16]
+    node _T_29 = mux(_T_18, _T_19, _T_28) @[Mux.scala 98:16]
+    node _T_30 = mux(_T_16, _T_17, _T_29) @[Mux.scala 98:16]
+    node _T_31 = mux(_T_14, _T_15, _T_30) @[Mux.scala 98:16]
+    node _T_32 = mux(_T_12, _T_13, _T_31) @[Mux.scala 98:16]
+    node _T_33 = mux(_T_9, _T_11, _T_32) @[Mux.scala 98:16]
+    node _T_34 = mux(_T_6, _T_8, _T_33) @[Mux.scala 98:16]
+    node _T_35 = mux(_T_3, _T_5, _T_34) @[Mux.scala 98:16]
+    node _T_36 = mux(_T, _T_2, _T_35) @[Mux.scala 98:16]
+    io.result <= _T_36 @[ALU.scala 13:13]
+    
